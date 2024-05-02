@@ -133,9 +133,10 @@ async def start_streaming(_notifier):
 async def start_broadcast_msg(_notifier, message):
     print("Starting broadcast_msg...")
     list = msgsplitter.split(message, length_limit=150,)
+    ct = len(list)
     while True:
-        for l in list:
-            await _notifier.push(l)
+        for x in range(ct):
+            await _notifier.push(list[x])
             time.sleep(randrange(5))
 
 if __name__=="__main__":
